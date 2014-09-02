@@ -40,6 +40,7 @@ class Iconpicker extends InputWidget
      * @var bool $removePrefix   - remove font-set prefix and return clear icon name (such as "cloud" istead of "fa-cloud" "cog" instead of "glyphicon-cog")
      */
     public $removePrefix=false;
+
     /**
      * @var
      */

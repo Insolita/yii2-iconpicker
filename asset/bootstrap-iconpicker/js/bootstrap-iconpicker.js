@@ -31,6 +31,7 @@
 
     Iconpicker.ICONSET = {
         glyphicon : [
+            '',
             'adjust',
             'align-center',
             'align-justify',
@@ -233,6 +234,7 @@
             'zoom-out'
         ],
         fa : [
+            '',
             'adjust',
             'anchor',
             'archive',
