@@ -21,6 +21,11 @@ or add
 
 to the require section of your `composer.json` file.
 
+Requirements
+------------
+This extension require twitter-bootstrap >3.0. and fontawesome
+If you want to use fontawesome iconset  - add depends to your main AssetBundle 'insolita\iconpicker\FontAwesomeAsset'
+for register fontawesome css, if it not registered yet
 
 Usage
 -----
@@ -28,4 +33,22 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \insolita\iconpicker\AutoloadExample::widget(); ?>```
+<?= $form->field($model, 'icon')->widget('\insolita\iconpicker\Iconpicker',[
+'rows'=>6,
+'columns'=>8,
+'iconset'=>'fontawesome'
+    ])->label('Choose icon'); ?>
+ ```
+
+ or without ActiveForm
+
+ ```php
+ <?php
+    echo \insolita\iconpicker\Iconpicker::widget([
+        'id'=>'choose_icon',
+        'name'=>'myicon',
+        'value'=>'glyphicon-cog',
+        'iconset'=>'glyphicon'
+    ]);
+ ?>
+ ```

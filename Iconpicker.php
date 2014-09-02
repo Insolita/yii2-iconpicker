@@ -53,6 +53,9 @@ class Iconpicker extends InputWidget
      *
      */
     public function init(){
+        if (!isset($this->options['id']) && !$this->hasModel()) {
+            $this->options['id'] = 'iconpicker_'.$this->getId();
+        }
         parent::init();
         $this->_id=$this->options['id'];
         if($this->hasModel() && !empty($this->model->{$this->attribute})){
