@@ -13,7 +13,7 @@ use \yii\web\AssetBundle;
 class IconpickerAsset extends AssetBundle
 {
 
-    public $sourcePath = '@vendor/insolita/yii2-iconpicker/asset/bootstrap-iconpicker';
+    public $sourcePath = '@vendor/insolita/yii2-iconpicker/assets/bootstrap-iconpicker';
 
     public $css
         = [
