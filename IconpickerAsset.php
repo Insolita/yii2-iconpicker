@@ -19,8 +19,13 @@ class IconpickerAsset extends AssetBundle
         = [
             'css/bootstrap-iconpicker.min.css',
         ];
+
     public $js
         = [
             'js/bootstrap-iconpicker.min.js',
         ];
+
+    public $depends=[
+        'yii\bootstrap\BootstrapAsset',
+    ];
 } 
