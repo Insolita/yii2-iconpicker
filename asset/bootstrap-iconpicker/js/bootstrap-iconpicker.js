@@ -905,7 +905,6 @@
 	                }else{
 		                btn = $('<button class="btn btn-default btn-icon" value="' + v + '" title="' + v + '"><i class="' + op.iconClass + ' ' + v + '"></i></button>');
 	                }
-
                 }
                 var td = $('<td></td>').append(btn);
                 tr.append(td);
