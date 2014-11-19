@@ -818,7 +818,7 @@
         icon: '',
         rows: 4,
         cols: 4,
-        placement: 'right'
+        placement: 'right',
     };
 
     Iconpicker.prototype.createButtonBar = function(){
