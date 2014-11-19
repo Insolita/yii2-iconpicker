@@ -26,7 +26,7 @@ class IconpickerAsset extends AssetBundle
         ];
 
     public $depends=[
-        'yii\web\YiiAsset',
+       'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapPluginAsset',
         'insolita\iconpicker\FontAwesomeAsset'
     ];
