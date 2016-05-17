@@ -2,6 +2,7 @@
 
 namespace insolita\iconpicker;
 
+
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;
@@ -9,7 +10,7 @@ use yii\web\JsExpression;
 use yii\widgets\InputWidget;
 
 /**
- * 
+ * widget for http://victor-valencia.github.io/bootstrap-iconpicker/
  */
 class Iconpicker extends InputWidget
 {
@@ -153,7 +154,7 @@ class Iconpicker extends InputWidget
 		$view = $this->getView();
 		$targetId = $this->_id;
 		$iconPickerId = $this->pickerOptions['id'];
-		$assetClass = 'insolita\\iconpicker\\assets\\' . ucfirst($this->iconset) . 'Iconset';
+		$assetClass = 'insolita\\iconpicker\\assets\\'.ucfirst($this->iconset).'Iconset';
 		$view->registerAssetBundle($assetClass);
 		$this->clientOptions = ArrayHelper::merge($this->clientOptions, [
 			'icon' => $this->_default,

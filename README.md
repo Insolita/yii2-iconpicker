@@ -27,7 +27,9 @@ This extension require twitter-bootstrap >3.0
 You can use it for 
 glyphicon, ionicon, fontawesome, weathericon, mapicon, octicon, typicon, elusiveicon
 By default - native bootstrap glyphicon
+
 NOTE! This extension not provide assets for icon source - you can setup and register it`s in view separately
+
 Suggestions:
  - https://packagist.org/packages/rmrevin/yii2-fontawesome
  - https://packagist.org/packages/rmrevin/yii2-ionicon
@@ -36,17 +38,19 @@ Suggestions:
  - https://github.com/github/octicons
  - https://github.com/reduxframework/elusive-icons
  - https://github.com/erikflowers/weather-icons
------
+
+
 Usage
 -----
 
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= $form->field($model, 'icon')->widget('\insolita\iconpicker\Iconpicker',[
-'iconset'=>'fontawesome',
-'clientOptions'=>['rows'=>8,'cols'=>10,'placement'=>'right'],
-    ])->label('Choose icon'); ?>
+<?= $form->field($model, 'icon')->widget('\insolita\iconpicker\Iconpicker',
+ [
+   'iconset'=>'fontawesome',
+   'clientOptions'=>['rows'=>8,'cols'=>10,'placement'=>'right'],
+ ])->label('Choose icon'); ?>
  ```
 
  or without ActiveForm
@@ -64,9 +68,9 @@ Once the extension is installed, simply use it in your code by  :
  ?>
  ```
  
- CHANGELOG
+ CHANGELOG 2.0.0 
  =========
- 2.0.0 
+ 
  - Remove font-awesome depend
  - Use original bower component
  - remove $columns, $rows, $placement properties
