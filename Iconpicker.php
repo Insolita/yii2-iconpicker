@@ -2,7 +2,11 @@
 
 namespace insolita\iconpicker;
 
+
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Json;
+use yii\web\JsExpression;
 use yii\widgets\InputWidget;
 
 /**
@@ -10,118 +14,195 @@ use yii\widgets\InputWidget;
  */
 class Iconpicker extends InputWidget
 {
-    /**
-     * @var int $columns number of display colums
-     */
-    public $columns=10;
-    /**
-     * @var int $rows number of display rows
-     */
-    public $rows=5;
-    /**
-     * @var string  $iconset - allowed variants glyphicon|ionicon|fontawesome|weathericon|mapicon|octicon|typicon|elusiveicon
-     */
-    public $iconset='fontawesome';
-    /**
-     * @var string $placement   pop-up placement
-     */
-    public $placement='top';
-    /**
-     * @var array $pickerOptions  additional html options for picker button
-     */
-    public $pickerOptions=['class'=>'btn btn-default btn-sm'];
+	/**
+	 * @var string $iconset - one of allowed variants
+	 * glyphicon|ionicon|fontawesome|weathericon|mapicon|octicon|typicon|elusiveicon|materialdesign
+	 */
+	public $iconset = 'glyphicon';
+	/**
+	 * @var array $pickerOptions additional html options for picker button
+	 */
+	public $pickerOptions = ['class' => 'btn btn-default btn-sm'];
 
-    /**
-     * @var array $containerOptions  additional html options for container
-     */
-    public $containerOptions=[];
+	/**
+	 * @var array $containerOptions additional html options for container
+	 */
+	public $containerOptions = [];
 
-    /**
-     * @var bool $removePrefix   - remove font-set prefix and return clear icon name (such as "cloud" istead of "fa-cloud" "cog" instead of "glyphicon-cog")
-     */
-    public $removePrefix=false;
+	/**
+	 * @var array $clientOptions - iconpicker options
+	 * (will be merged with defaultOptions @see getDefaultOptions() , so you can set only overrides)
+	 * @see       http://victor-valencia.github.io/bootstrap-iconpicker/
+	 **/
+	public $clientOptions
+		= [
+			'rows'            => 5,
+			'columns'         => 10,
+			'placement'       => 'right',
+			'align'           => 'center',
+			'arrowClass'      => 'btn-primary',
+			'header'          => true,
+			'footer'          => true,
+			'labelHeader'     => '{0} / {1}',
+			'labelFooter'     => '{0} - {1}:[{2}]',
+			'search'          => true,
+			'searchText'      => 'Search icon',
+			'selectedClass'   => 'btn-warning',
+			'unselectedClass' => 'btn-default',
+		];
 
-    /**
-     * @var
-     */
-    private $_id;
-    /**
-     * @var string
-     */
-    private $_default='fa-ellipsis-h';
+	/**
+	 * @var JsExpression $onSelectIconCallback
+	 * @example
+	 * onSelectIconCallback=>new JsExpression('function(icon){
+	 *    return "mystring " + icon.replace('fa-','')
+	 * }'),
+	 */
+	public $onSelectIconCallback;
 
-    /**
-     *
-     */
-    public function init(){
-        if (!isset($this->options['id']) && !$this->hasModel()) {
-            $this->options['id'] = 'iconpicker_'.$this->getId();
-        }
-        parent::init();
-        $this->_id=$this->options['id'];
-        if($this->hasModel() && !empty($this->model->{$this->attribute})){
-            $this->_default=$this->pickerOptions['data-icon']=$this->model->{$this->attribute};
-        }
-        if(!$this->hasModel() && !empty($this->value)){
-            $this->_default=$this->pickerOptions['data-icon']=$this->value;
-        }
-        if(!isset($this->pickerOptions['id'])){
-            $this->pickerOptions['id']=$this->_id.'_jspicker';
-        }
-        if($this->removePrefix){
-            $this->_default=($this->iconset=='fontawesome')?'fa-'.$this->_default:'glyphicon-'.$this->_default;
-        }
-        $this->registerAssets();
-    }
 
-    /**
-     * @return string bootstrap-picker button with hiddenInput field where we put selected value
-     */
-    public function run()
-    {
+	/**
+	 * @var
+	 */
+	private $_id;
+	/**
+	 * @var string
+	 */
+	private $_default = 'fa-ellipsis-h';
 
-        if($this->hasModel()) {
-            $inp= Html::activeHiddenInput($this->model, $this->attribute, $this->options);
-        }else{
-            $inp= Html::hiddenInput($this->name, $this->value, $this->options);
-        }
-        $picker=Html::button('Выберите иконку',$this->pickerOptions);
+	/**
+	 *
+	 */
+	public function init()
+	{
+		$this->registerTranslations();
+		if (!isset($this->options['id']) && !$this->hasModel())
+		{
+			$this->options['id'] = 'iconpicker_' . $this->getId();
+		}
+		parent::init();
+		$this->_id = $this->options['id'];
+		if ($this->hasModel() && !empty($this->model->{$this->attribute}))
+		{
+			$this->_default = $this->pickerOptions['data-icon'] = $this->model->{$this->attribute};
+		}
+		if (!$this->hasModel() && !empty($this->value))
+		{
+			$this->_default = $this->pickerOptions['data-icon'] = $this->value;
+		}
+		if (!isset($this->pickerOptions['id']))
+		{
+			$this->pickerOptions['id'] = $this->_id . '_jspicker';
+		}
+		$this->clientOptions = ArrayHelper::merge($this->getDefaultOptions(), $this->clientOptions);
+		$this->registerAssets();
+	}
 
-        return  Html::tag('div',$picker.$inp,$this->containerOptions);
-    }
+	/**
+	 * Register widget translations.
+	 */
+	public function registerTranslations()
+	{
+		if (!isset(\Yii::$app->i18n->translations['insolita/iconpicker'])
+			&& !isset
+			(\Yii::$app->i18n->translations['insolita/iconpicker/*'])
+		)
+		{
+			\Yii::$app->i18n->translations['insolita/iconpicker'] = [
+				'class'            => 'yii\i18n\PhpMessageSource',
+				'basePath'         => '@insolita/iconpicker/messages',
+				'forceTranslation' => true,
+				'fileMap'          => [
+					'insolita/iconpicker' => 'iconpicker.php',
+				],
+			];
+		}
+	}
 
-    /**
-     * Registers the needed assets
-     */
-    public function registerAssets()
-    {
-        $view = $this->getView();
-        $id=$this->_id;
-        $pickid=$this->pickerOptions['id'];
-        IconpickerAsset::register($view);
+	/**
+	 * Default js-plugin options
+	 *
+	 * @return array
+	 **/
+	protected function getDefaultOptions()
+	{
+		return [
+			'iconset'         => $this->iconset,
+			'rows'            => 5,
+			'columns'         => 10,
+			'placement'       => 'right',
+			'align'           => 'center',
+			'arrowClass'      => 'btn-primary',
+			'header'          => true,
+			'footer'          => true,
+			'labelHeader'     => '{0} / {1}',
+			'labelFooter'     => '{0} - {1}:[{2}]',
+			'search'          => true,
+			'searchText'      => \Yii::t('insolita/iconpicker', 'SEARCH_ICON'),
+			'selectedClass'   => 'btn-warning',
+			'unselectedClass' => 'btn-default',
+		];
+	}
 
-        $js[]=<<<JS
-           $("#{$pickid}").iconpicker({
-                iconset: '{$this->iconset}',
-                icon: '{$this->_default}',
-                rows: '{$this->rows}',
-                cols: '{$this->columns}',
-                placement: '{$this->placement}'
-            });
+	/**
+	 * Registers the needed assets
+	 */
+	public function registerAssets()
+	{
+		$view = $this->getView();
+		$targetId = $this->_id;
+		$iconPickerId = $this->pickerOptions['id'];
+		$assetClass = 'insolita\\iconpicker\\assets\\'.ucfirst($this->iconset).'Iconset';
+		$view->registerAssetBundle($assetClass);
+		$this->clientOptions = ArrayHelper::merge($this->clientOptions, [
+			'icon' => $this->_default,
+		]);
+		$this->clientOptions = Json::encode($this->clientOptions);
+		$js[]
+			= <<<JS
+           $("#{$iconPickerId}").iconpicker({$this->clientOptions});
 JS;
-        $js[]=($this->removePrefix)?<<<JS
-           $("#{$pickid}").on('change', function(e) {
-                var icon=e.icon.replace('fa-','').replace('glyphicon-','');
-                $('#$id').val(icon);
+		$callback = null;
+		if (!empty($this->onSelectIconCallback))
+		{
+			$callback = $this->onSelectIconCallback instanceof JsExpression
+				? $this->onSelectIconCallback->__toString()
+				: $this->onSelectIconCallback;
+		}
+		$js[] = ($callback)
+			? <<<JS
+           $("#{$iconPickerId}").on('change', function(e) {
+                var callback = {$callback};
+                var icon = callback(e.icon);
+                $('#$targetId').val(icon);
             });
 JS
-            :
-            <<<JS
-            $("#{$pickid}").on('change', function(e) {
-                $('#$id').val(e.icon);
+			:
+			<<<JS
+            $("#{$iconPickerId}").on('change', function(e) {
+                $('#$targetId').val(e.icon);
             });
 JS;
 
-       $view->registerJs(implode("\n",$js));
-    }
+		$view->registerJs(implode("\n", $js));
+	}
+
+	/**
+	 * @return string bootstrap-picker button with hiddenInput field where we put selected value
+	 */
+	public function run()
+	{
+
+		if ($this->hasModel())
+		{
+			$inp = Html::activeHiddenInput($this->model, $this->attribute, $this->options);
+		}
+		else
+		{
+			$inp = Html::hiddenInput($this->name, $this->value, $this->options);
+		}
+		$picker = Html::button(\Yii::t('insolita/iconpicker', 'CHOOSE_ICON'), $this->pickerOptions);
+
+		return Html::tag('div', $picker . $inp, $this->containerOptions);
+	}
 }
