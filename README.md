@@ -68,8 +68,8 @@ Once the extension is installed, simply use it in your code by  :
  ?>
  ```
  
- CHANGELOG 2.0.0 
- =========
+CHANGELOG 2.0.0 
+-----
  
  - Remove font-awesome depend
  - Use original bower component
