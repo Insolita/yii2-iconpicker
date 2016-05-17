@@ -1,4 +1,4 @@
-Widget for bootstrap-iconpicker
+Widget for bootstrap-iconpicker 2.0
 ===============================
 Widget for bootstrap-iconpicker plugin http://victor-valencia.github.io/bootstrap-iconpicker/
 
@@ -62,3 +62,11 @@ Once the extension is installed, simply use it in your code by  :
     ]);
  ?>
  ```
+ 
+ CHANGELOG
+ =========
+ 2.0.0 
+ - Remove font-awesome depend
+ - Use original bower component
+ - remove $columns, $rows, $placement properties
+ - add $clientOptions property with plugin configurations
