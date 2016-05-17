@@ -1,0 +1,24 @@
+{
+	"name": "insolita/yii2-iconpicker",
+	"description": "Widget for bootstrap-iconpicker plugin http://victor-valencia.github.io/bootstrap-iconpicker/",
+	"type": "yii2-extension",
+	"keywords": ["yii2","extension"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "insolita",
+			"email": "donnainsolita@gmail.com"
+		}
+	],
+    "require": {
+        "yiisoft/yii2": "*",
+        "yiisoft/yii2-bootstrap": "*",
+		"bower-asset/bootstrap-iconpicker":"*",
+		"fortawesome/font-awesome": "*"
+    },
+	"autoload": {
+		"psr-4": {
+			"insolita\\iconpicker\\": ""
+		}
+	}
+}
