@@ -58,6 +58,7 @@ Once the extension is installed, simply use it in your code by  :
         'name'=>'myicon',
         'value'=>'glyphicon-cog',
         'iconset'=>'glyphicon',
+        'pickerOptions'=>['class'=>'btn btn-primary'],
         'clientOptions'=>['placement'=>'bottom','search'=>false],
     ]);
  ?>
@@ -70,3 +71,5 @@ Once the extension is installed, simply use it in your code by  :
  - Use original bower component
  - remove $columns, $rows, $placement properties
  - add $clientOptions property with plugin configurations
+ - remove $removePrefix property
+ - add $onSelectIconCallback property for add behavior after select icon

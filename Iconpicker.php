@@ -54,8 +54,10 @@ class Iconpicker extends InputWidget
 	/**
 	 * @var JsExpression $onSelectIconCallback
 	 * @example
-	 * onSelectIconCallback=>new JsExpression('function(icon){
-	 *    return "mystring " + icon.replace('fa-','')
+	 * onSelectIconCallback=>new JsExpression('function(e){
+	 *    var icon = e.icon;
+	 *    icon = "some "+icon;
+	 *    $('#target').val(icon);
 	 * }'),
 	 */
 	public $onSelectIconCallback;
@@ -173,8 +175,7 @@ JS;
 			? <<<JS
            $("#{$iconPickerId}").on('change', function(e) {
                 var callback = {$callback};
-                var icon = callback(e.icon);
-                $('#$targetId').val(icon);
+                callback(e);
             });
 JS
 			:
