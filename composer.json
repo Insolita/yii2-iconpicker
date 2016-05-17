@@ -13,8 +13,8 @@
     "require": {
         "yiisoft/yii2": "*",
         "yiisoft/yii2-bootstrap": "*",
-        "fortawesome/font-awesome": "*"
-    },
+		"bower-asset/bootstrap-iconpicker":"*"
+	},
 	"autoload": {
 		"psr-4": {
 			"insolita\\iconpicker\\": ""
