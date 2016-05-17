@@ -72,4 +72,4 @@ Once the extension is installed, simply use it in your code by  :
  - remove $columns, $rows, $placement properties
  - add $clientOptions property with plugin configurations
  - remove $removePrefix property
- - add $onSelectIconCallback property for add behavior after select icon
+ - add $onSelectIconCallback property for add custom javascript behavior after select icon
