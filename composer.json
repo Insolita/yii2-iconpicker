@@ -2,12 +2,13 @@
 	"name": "insolita/yii2-iconpicker",
 	"description": "Widget for bootstrap-iconpicker plugin http://victor-valencia.github.io/bootstrap-iconpicker/",
 	"type": "yii2-extension",
-	"keywords": ["yii2","extension"],
+	"version": "3.0.0",
+	"keywords": ["yii2","fontawesome","icons","bootstrap","ionicon","glyphicon","picker"],
 	"license": "MIT",
 	"authors": [
 		{
 			"name": "insolita",
-			"email": "donnainsolita@gmail.com"
+			"email": "webmaster100500@ya.ru"
 		}
 	],
     "require": {
