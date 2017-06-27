@@ -5,13 +5,11 @@
 
 namespace insolita\iconpicker\assets;
 
-
 class IoniconIconset extends IconpickerAsset
 {
-	public function init()
-	{
-		$this->js[] = $this->iconsetResolver('ionicon');
-		parent::init();
-
-	}
+    public function init()
+    {
+        $this->js[] = $this->iconsetResolver('ionicon');
+        parent::init();
+    }
 }

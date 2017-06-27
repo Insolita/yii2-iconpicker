@@ -5,13 +5,11 @@
 
 namespace insolita\iconpicker\assets;
 
-
 class WeathericonIconset extends IconpickerAsset
 {
-	public function init()
-	{
-		$this->js[] = $this->iconsetResolver('weathericon');
-		parent::init();
-
-	}
+    public function init()
+    {
+        $this->js[] = $this->iconsetResolver('weathericon');
+        parent::init();
+    }
 }

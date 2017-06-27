@@ -5,13 +5,11 @@
 
 namespace insolita\iconpicker\assets;
 
-
 class GlyphiconIconset extends IconpickerAsset
 {
-	public function init()
-	{
-		$this->js[] = $this->iconsetResolver('glyphicon');
-		parent::init();
-
-	}
+    public function init()
+    {
+        $this->js[] = $this->iconsetResolver('glyphicon');
+        parent::init();
+    }
 }

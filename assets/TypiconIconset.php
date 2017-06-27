@@ -5,13 +5,11 @@
 
 namespace insolita\iconpicker\assets;
 
-
 class TypiconIconset extends IconpickerAsset
 {
-	public function init()
-	{
-		$this->js[] = $this->iconsetResolver('typicon');
-		parent::init();
-
-	}
+    public function init()
+    {
+        $this->js[] = $this->iconsetResolver('typicon');
+        parent::init();
+    }
 }

@@ -5,13 +5,11 @@
 
 namespace insolita\iconpicker\assets;
 
-
 class FontawesomeIconset extends IconpickerAsset
 {
-	public function init()
-	{
-		$this->js[] = $this->iconsetResolver('fontawesome');
-		parent::init();
-
-	}
+    public function init()
+    {
+        $this->js[] = $this->iconsetResolver('fontawesome');
+        parent::init();
+    }
 }
