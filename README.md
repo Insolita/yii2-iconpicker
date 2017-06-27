@@ -1,6 +1,10 @@
 Widget for bootstrap-iconpicker 3.0
 ===================================
 
+![Latest Stable Version](https://img.shields.io/packagist/v/insolita/yii2-iconpicker.svg)
+[![Total Downloads](https://img.shields.io/packagist/dt/insolita/yii2-iconpicker.svg)](https://packagist.org/packages/insolita/yii2-iconpicker)
+![License](https://img.shields.io/packagist/l/insolita/yii2-iconpicker.svg)
+
 Widget for bootstrap-iconpicker plugin http://victor-valencia.github.io/bootstrap-iconpicker/
 
 Now based on more actual fork https://github.com/eliberty/bootstrap-iconpicker
@@ -42,7 +46,8 @@ You can use it for
 
 By default - native bootstrap glyphicon
 
-###NOTE!
+#### NOTE!
+
 This extension not provide assets for icon source - you can setup and register it`s in view separately
 You can create needed assets, or direct include css of icon fonts from folder @bower/eliberty-bootstrap-iconpicker/icon-fonts
 
