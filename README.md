@@ -1,7 +1,10 @@
 Widget for bootstrap-iconpicker 3.0
 ===================================
+
 Widget for bootstrap-iconpicker plugin http://victor-valencia.github.io/bootstrap-iconpicker/
+
 Now based on more actual fork https://github.com/eliberty/bootstrap-iconpicker
+
 FontAwesome 4.7.0 support
 
 Installation
