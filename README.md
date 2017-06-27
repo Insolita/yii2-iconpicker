@@ -1,6 +1,8 @@
-Widget for bootstrap-iconpicker 2.0
-===============================
+Widget for bootstrap-iconpicker 3.0
+===================================
 Widget for bootstrap-iconpicker plugin http://victor-valencia.github.io/bootstrap-iconpicker/
+Now based on more actual fork https://github.com/eliberty/bootstrap-iconpicker
+FontAwesome 4.7.0 support
 
 Installation
 ------------
@@ -10,13 +12,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist insolita/yii2-iconpicker "~2.0"
+composer require --prefer-dist insolita/yii2-iconpicker "^3.0"
 ```
 
 or add
 
 ```
-"insolita/yii2-iconpicker": "~2.0"
+"insolita/yii2-iconpicker": "^3.0"
 ```
 
 to the require section of your `composer.json` file.
@@ -25,20 +27,19 @@ Requirements
 ------------
 This extension require twitter-bootstrap >3.0
 You can use it for 
-glyphicon, ionicon, fontawesome, weathericon, mapicon, octicon, typicon, elusiveicon
+ - glyphicon  (with bootstrap by default)
+ - ionicon       https://packagist.org/packages/rmrevin/yii2-ionicon
+ - fontawesome   https://packagist.org/packages/rmrevin/yii2-fontawesome
+ - weathericon   https://github.com/erikflowers/weather-icons
+ - mapicon
+ - octicon        https://github.com/github/octicons
+ - typicon        https://github.com/stephenhutchings/typicons.font
+ - elusiveicon    https://github.com/reduxframework/elusive-icons
+ - materialdesign https://packagist.org/packages/mervick/yii2-material-design-icons
+
 By default - native bootstrap glyphicon
 
 NOTE! This extension not provide assets for icon source - you can setup and register it`s in view separately
-
-Suggestions:
- - https://packagist.org/packages/rmrevin/yii2-fontawesome
- - https://packagist.org/packages/rmrevin/yii2-ionicon
- - https://packagist.org/packages/mervick/yii2-material-design-icons
- - https://github.com/stephenhutchings/typicons.font
- - https://github.com/github/octicons
- - https://github.com/reduxframework/elusive-icons
- - https://github.com/erikflowers/weather-icons
-
 
 Usage
 -----
@@ -67,13 +68,7 @@ Once the extension is installed, simply use it in your code by  :
     ]);
  ?>
  ```
- 
-CHANGELOG 2.0.0 
------
- 
- - Remove font-awesome depend
- - Use original bower component
- - remove $columns, $rows, $placement properties
- - add $clientOptions property with plugin configurations
- - remove $removePrefix property
- - add $onSelectIconCallback property for add custom javascript behavior after select icon
+
+
+
+
