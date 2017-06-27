@@ -42,7 +42,9 @@ You can use it for
 
 By default - native bootstrap glyphicon
 
-NOTE! This extension not provide assets for icon source - you can setup and register it`s in view separately
+###NOTE!
+This extension not provide assets for icon source - you can setup and register it`s in view separately
+You can create needed assets, or direct include css of icon fonts from folder @bower/eliberty-bootstrap-iconpicker/icon-fonts
 
 Usage
 -----
@@ -71,7 +73,3 @@ Once the extension is installed, simply use it in your code by  :
     ]);
  ?>
  ```
-
-
-
-
