@@ -83,8 +83,8 @@ class Iconpicker extends InputWidget
         }
         parent::init();
         $this->internalId = $this->options['id'];
-        if ($this->hasModel() && !empty($this->model->{$this->attribute})) {
-            $this->defaultIcon = $this->pickerOptions['data-icon'] = $this->model->{$this->attribute};
+        if ($this->hasModel() && !empty(Html::getAttributeValue($this->model, $this->attribute))) {
+            $this->defaultIcon = $this->pickerOptions['data-icon'] = Html::getAttributeValue($this->model, $this->attribute);
         }
         if (!$this->hasModel() && !empty($this->value)) {
             $this->defaultIcon = $this->pickerOptions['data-icon'] = $this->value;
